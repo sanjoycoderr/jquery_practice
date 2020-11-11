@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="">
+    <img src="image/sp.gif" id="loding">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <form>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text" name="username" placeholder="username" autocomplete="off" id="username" class="form-control">
+          <span id="usercheck"></span>
+        </div>
+        <div class="form-group">
+          <label for=""></label>
+          <input type="password" name="password" placeholder="password" autocomplete="off" id="password" class="form-control">
+          <span id="passwordcheck"></span>
+        </div>
+          <div class="form-group">
+          <label for=""></label>
+          <input type="password" name="password" placeholder=" confarm password" autocomplete="off" id="conpassword" class="form-control">
+          <span id="conpasswordcheck"></span>
+        </div>
+        <button type="submit" id="btnsubmit" class="btn btn-primary">send</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+      $(document).ready(function(){
+          $('#usercheck').hide();
+          $('#emailcheck').hide();
+          $('#passwordcheck').hide();
+          $('#conpasswordcheck').hide();
+          var user_val = true;
+          var pass_val = true;
+          var conpass_val = true;
+         $('#username').keyup(function(){
+             username();
+         })
+        //  username name check 
+
+         function username(){
+           var  username = $('#username').val();
+             if(username.length == ''){
+                 $('#usercheck').show();
+                 $('#usercheck').html('please fill the username');
+                 $('#usercheck').css('color','red');
+               var  user_val = false;
+                 return false;
+             }
+             else{
+              $('#usercheck').hide();
+
+             }
+             if((username.length < 3) || (username.length > 20)){
+                 $('#usercheck').show();
+                 $('#usercheck').html('username must be 3 to 20');
+                 $('#usercheck').css('color','red');
+               var  user_val = false;
+                 return false;
+             }
+             else{
+                $('#usercheck').hide();
+             }
+         }
+        //  password check 
+        $('#password').keyup(function(){
+            password();
+        })
+        function password(){
+          var password = $('#password').val();
+          if(password.length == ""){
+              $('#passwordcheck').show();
+              $('#passwordcheck').html('password required');
+              $('#passwordcheck').css('color','red');
+            var   pass_val = false;
+              return false;
+          }
+          if((password.length <3) || (password.length >10)){
+            $('#passwordcheck').show();
+            $('#passwordcheck').html('password will be 3 to 10');
+             $('#passwordcheck').css('color','red');
+            var  pass_val = false;
+              return false;
+          }
+          else{
+            $('#passwordcheck').hide();
+
+          }
+        }
+
+        // conpassword check 
+        $('#conpassword').keyup(function(){
+            conpassword();
+        });
+         
+        function conpassword(){
+          var password = $('#password').val();
+            var conpassword = $('#conpassword').val();
+            if(conpassword == ""){
+              $('#conpasswordcheck').show();
+              $('#conpasswordcheck').html('please fill the password');
+              $('#conpasswordcheck').css('color','red');
+             var conpass_val = false;
+              return false;
+            }
+            if(conpassword.length != password.length){
+              $('#conpasswordcheck').show();
+              $('#conpasswordcheck').html('not match the confiarm password');
+              $('#conpasswordcheck').css('color','red');
+            var   conpass_val = false;
+              return false
+            }
+            else{
+              $('#conpasswordcheck').hide();
+
+            }
+        }
+        
+
+        // submit button 
+        $('#btnsubmit').click(function(e){
+          e.preventDefault()
+          if((user_val == true)  && (pass_val == true) && (conpass_val ==true )){
+            username();
+            password();
+            conpassword();
+            console.log('btn submited');
+            return true;
+          }
+          else{
+            return false;
+          }
+        })
+
+
+
+      })
+  </script>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</body>
+</html>

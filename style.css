@@ -1,0 +1,14 @@
+#loding{
+	top: 50vh;
+	left: 50%;
+	background-color: blue;
+	position: relative;
+	/*background-image:url('image/sp.gif');*/
+	transform:  translate(-100px,-100px);
+	z-index: 22;
+
+}
+#loder{
+/*	height: 100vh;
+	width: 100%;*/
+}

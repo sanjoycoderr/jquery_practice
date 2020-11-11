@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="one"></div>
+<button id="hide">hide</button>
+<button id="show">show</button>
+<button id="toggle">toggle</button>
+<div id="maindiv" style="height:25px; width: 60%; background-color: rgb(141, 148, 145);">click here</div>
+<!-- <div id="maindiv1" style="height:50vh;text-align: center; width: 60%;display: none; background-color: aquamarine;"> text</div> -->
+<button id="animate1">animate</button>
+<!-- <div id="animate2"style='height:200px;position:absolute; width:200px;background-color:green'></div> -->
+<a href="http://google.com">google</a>
+
+<form action="">
+    <label for="username"></label>
+    <input type="text" id="text">
+</form>
+<div>
+    <ul id="uli"></ul>
+</div>
+
+
+
+
+    <script src="jquery.js"></script>
+    <script>
+        $('document').ready(function(){
+         $('#one').append("<p> this is paragrap line</p>");
+         $('#one').css('border','5px solid green');
+         $('p').css('color','red');
+         $('#one').append('<p>this is the text</p>');
+         $('p:nth-child(1)').css('color','green');
+
+         $('p:nth-child(1)').click(function(){
+          $(this).hide();
+         });
+         $('p').mouseover(function(){
+             $(this).css('color','blue');
+         });
+
+         $('#hide').click(function(){
+             $('p').hide(1000);
+         });
+         $('#show').click(function(){
+             $('p').show(1000);
+         });
+
+        //  $('#toggle').click(function(){
+        //      $('p').toggle(1000);
+        //  })
+          $('#toggle').click(function(){
+              $('p').fadeToggle(1000);
+          });
+
+          $('#maindiv').click(function(){
+            $('#maindiv1').slideToggle(1000);
+          });
+
+          $('#animate1').click(function(){
+              $('#animate2').animate({
+                  'height':'200px',
+                  'width':'200px',
+                  'right':'300px',
+                  'background-color':'green'
+
+              },2000)
+          });
+
+
+          $('[href]').css('color','red');
+          $('input').focus(function(){
+              $(this).css('border','4px solid green','background-color','green')
+          });
+          $('input').blur(function(){
+              $(this).css('border',' 1px solid black')
+          });
+          $('a').attr('target','_blank');
+          var mayarr = ['sanjoy','ram','sam','jodu'];
+          $.each(mayarr,function(i,val){
+              $('#uli').append('<li>' + val+ '</li>')
+          })
+        })
+    </script>
+</body>
+</html>
